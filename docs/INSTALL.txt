@@ -1,0 +1,1 @@
+Installs as an egg or a zip file

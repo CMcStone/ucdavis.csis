@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Center for Science and Innovation Studies</title>
+<!--	<link rel="stylesheet" href="css/font/titillium.css" type="text/css" />-->
+	<link rel="stylesheet" href="styles.css" type="text/css" />
+
+<!--<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script> -->
+<!--<script type="text/javascript" src="js/jquery.galleria.js"></script>-->
+<script type="text/javascript" src="js/raphael-min.js"></script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+$(document).ready(function(){
+
+	var cw = 700;
+	var img_color = new Array(
+		["sparrows.gif","#706DA5"],
+		["roots.gif","#7DA6CC"],
+		["penrose.gif","#00A7E8"]
+	);
+	var rn = Math.floor(Math.random()*(img_color.length));
+	if (rn!=2){
+		$('#slideshow li').css('background-image','url(img/'+img_color[rn][0]+')');
+	} else {
+		var paper = 0; 
+	//	var x1 = 480;
+	//	var y1 = 120;
+	//	var x2 = 30;
+	//	var y2 = 40;
+		var xx1 = 450;
+		var yy1 = 235;
+	//	var xx2 = 30;
+	//	var yy2 = 40;
+		var xxx2 = 10;
+		var yyy2 = 10;
+		var degree = 72;
+		var startdegree = 90;
+		var length = 40;
+		var i = 0;
+		var j = 0;
+		var k = 0;
+		var l = 0;
+		var m = 0;
+		
+		var draw_path2 = function () {
+			// var rn = Math.floor(Math.random()*10)
+			if (i === 5){
+				// xxx2 = -xxx2;
+				i = 0;
+				startdegree = startdegree + degree + degree/2;
+			}
+			if (j === 8){
+				// xxx2 = -xxx2;
+				j = 0;
+				startdegree = startdegree + degree + degree/2;
+			}
+			if (k === 17){
+				// xxx2 = -xxx2;
+				k = 0;
+				startdegree = startdegree + degree + degree/2;
+			}
+			if (m === 3){
+				// xxx2 = -xxx2;
+				m = 0;
+				// startdegree = startdegree + degree + degree/2;
+			}
+			xxx2 = (length * Math.sin(startdegree * Math.PI/180));
+			yyy2 = (length * Math.cos(startdegree * Math.PI/180));
+		
+			var d = paper.path("M"+xx1+" "+yy1+"l"+xxx2+" "+yyy2).attr({
+			    stroke: "rgba(0, 190, 217, .3)"
+			});
+			xx1 = xx1 + xxx2;
+			yy1 = yy1 + yyy2;
+			startdegree = degree + startdegree;
+			if (l === 5000) {
+				clearInterval( IntervalId );
+			};
+			i++;
+			j++;
+			k++;
+			l++;
+			m++;
+		};
+		// paper.safari();
+        window.onload = function () {
+			wwidth = $("body").width() - 20;
+			wheight = $("body").height();
+		/*	wwheight = $(window).height();
+			if (wwheight < wbheight ) {
+				wheight = wbheight;
+			} else {
+				wheight = wbheight;
+			} */
+		//	wwidth = 960;
+		//	wheight = 600;
+			xx1 = wwidth/2 - 30;
+			
+			paper = Raphael("slideshow", wwidth, wheight);
+			//	rn2 = Math.floor(Math.random()*2);
+			//	if (rn2 === 0) {
+			//var $j = jQuery.noConflict();
+			
+			//$j(function(){ 
+			//   window.setInterval(draw_path2, 1); 
+			//});
+			 IntervalId = setInterval (draw_path2, 1 );
+			//	} else {
+			//		IntervalId = setInterval ("draw_path()", 1 );
+			//	}
+			// setTimeout ("clearInterval( IntervalId )", 8000);
+		};
+	}
+	$('#header h2 a span').hover(function(){
+		$(this).addClass('clr1');
+		$(this).css('background-color',clr);
+	}, function(){
+		$(this).removeClass('clr1');
+		$(this).css('background-color','transparent');
+	});
+	
+	$('#slideshow li').show();
+	var clr = img_color[rn][1];
+	$('.clr').css('background-color',clr);
+	$('.clr1').css('background-color',clr);
+	$('.gallery_container').fadeIn(cw);
+	
+});
+/* ]]> */
+</script>
+</head>
+<body id="page">
+	<div id="header-wrap">
+		<div id="header">
+			<h1><a href="http://innovation.ucdavis.edu/" title="home"><span></span>Center for Science and Innovation Studies</a></h1>
+			<h2 class="ucdlogo"><a href="http://www.ucdavis.edu/" title=""><span></span>UC Davis</a></h2>
+			<div id="log-in" class="sidebar opaque">
+				<div id="personal-tools">
+					<a href="#">CAS Log in</a>
+				</div>
+			</div>
+			
+			
+			</div>
+		</div>
+	</div>
+	<div class="gallery_container">
+		<ul id="slideshow">
+			<li></li>
+		</ul>
+	</div>
+	<div id="content-1">
+		<div id="page-menu" class="left">
+			<div id="menu">
+				<ul id="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="page.html" class="active">People</a></li>
+					<li><a href="#">News</a></li>
+					<li><a href="#">Events</a></li>
+					<li><a href="#">Research</a></li>
+					<li><a href="#">Projects</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="maincol" class="left clr opaque">
+			<div class="bar">
+				<div id="portal-breadcrumbs">
+				    <span id="breadcrumbs-you-are-here"><a
+				    href="http://www.ucdavis.edu/">home</a>
+			            <span class="breadcrumbSeparator">
+			                &gt;
+			                
+			            </span>
+					</span>
+					<span>
+						<span>People</span>
+					</span>
+				</div>
+			</div>
+			<div id="main" class="opaque2">
+				<h3>Who we are</h3>
+				<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse et dolor viverra quam aliquam adipiscing vel non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod iaculis cursus. Nullam bibendum tortor at quam adipiscing egestas. Cras egestas lacinia diam, eget rutrum sapien ultrices vitae. Proin sit amet urna at quam euismod feugiat ac ut orci. Proin augue eros, suscipit nec rhoncus in, vulputate vitae dolor. Suspendisse potenti. In at consequat nibh. Morbi elit neque, imperdiet ut dictum adipiscing, vehicula non purus. Suspendisse sed diam odio, nec venenatis orci. Fusce ut lorem libero. Maecenas fermentum interdum scelerisque. Maecenas id dapibus odio. Nunc vehicula nisl ut lacus dictum sit amet cursus velit venenatis.</p>
+				<h3>What we do</h3>
+				<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras ullamcorper sapien sed tellus luctus vitae fringilla mi accumsan. Pellentesque auctor scelerisque dolor, in cursus purus condimentum eget. Duis faucibus dui quis turpis tincidunt tristique pretium diam tempor. Pellentesque at elit eget tellus consectetur volutpat quis in tortor. Duis dictum arcu molestie purus aliquet eget fringilla arcu convallis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus eu tortor nibh. Curabitur feugiat, purus vitae commodo ornare, lectus tellus tristique nisl, id feugiat neque augue vel velit. Proin ante sem, convallis vel venenatis at, lobortis id turpis. Aenean augue erat, laoreet ut dapibus a, consectetur ac enim. In hac habitasse platea dictumst. Sed posuere diam a est aliquet id bibendum felis accumsan. Etiam commodo, ante at consequat imperdiet, mauris sem bibendum tortor, id vehicula eros arcu et purus. Nam rhoncus aliquam malesuada. Sed dignissim aliquam tincidunt. Pellentesque ut consectetur dolor.</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div id="sidebar" class="left opaque">
+
+			<div id="ftrinfo" class="portlet left sidebar">
+				<p>		    <a accesskey="9"
+			       href="http://sts.ucdavis.edu/contact-info">
+			      Questions or comments?</a> | 
+			
+			    <span>
+			      <a accesskey="0"
+			         href="http://sts.ucdavis.edu/accessibility-info">
+			        Accessibility</a> | 
+			    </span>
+			
+			    
+			
+			    <span>
+			      <b>Last updated:</b>
+			    </span>
+			
+			    March 26, 2010
+			
+			    <br />
+			
+			    Copyright &copy; The Regents of the University of California, Davis campus 2005-06. All Rights Reserved.
+				</p>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="position:absolute; left:-2000px">design by <a href="http://mmott.com">mmott visual</a></div>
+</body>
+</html>
