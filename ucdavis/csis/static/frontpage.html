@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Center for Science and Innovation Studies</title>
+    <!--link rel="stylesheet" href="font/titillium.css" type="text/css" /-->
+	<link rel="stylesheet" href="styles.css" type="text/css" />
+
+<!--<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script> -->
+<!--script type="text/javascript" src="js/jquery.galleria.js"></script-->
+<script type="text/javascript" src="js/jquery.color.js"></script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+$(document).ready(function(){
+
+	// slideshow
+		
+	var no = 1;
+	var p = 1;
+	var play = 1;
+	var la = '#slideshow li.last-active';
+	var a = '#slideshow li.active';
+	var t = $("#slideshow li").length;
+	var cw = 700;
+	var it = 5000;
+	var IntervalId = 0;
+	clr = '#FFFFFF';
+	
+	// start timer
+	IntervalId = setInterval(function(){slideShow('next');}, it);
+	
+	// change color
+	function coleur(_clr) {
+		$('.clr').animate({backgroundColor:_clr}, cw);
+		$('.clr1').animate({backgroundColor:_clr}, cw);
+	};
+	
+	$('#ucd-menu h2 a span').hover(function(){
+		$(this).addClass('clr1');
+		$(this).css('background-color',clr);
+	}, function(){
+		$(this).removeClass('clr1');
+		$(this).css('background-color','transparent');
+	});
+	
+	// show next/previous slide
+	function slideShow(prevnext) {
+		if (p === 1) {
+//			rn=Math.floor(Math.random()*3);
+//			if (rn === prn) {
+			p = 0;
+			$(a).addClass('last-active');
+	
+			if (prevnext == 'next') {
+			
+				var next = la+' + li';
+				var check = $(next).length;
+	
+				if (check === 0) {
+					next = '#slideshow li:first';
+				};
+				$(la).fadeOut(cw);
+				clr = $(next).attr('title');
+				coleur(clr);
+				$(next).fadeIn(cw, function() {
+					$(next).addClass('active');
+					$(la).removeClass('active last-active');
+				});
+			} else {
+	
+				var check = $(a).prev().length;
+				if (check === 0) {
+					prev = '#slideshow li:last';
+					$(la).fadeOut(cw);
+					clr = $(prev).attr('title');
+					coleur(clr);	
+					$(prev).fadeIn(cw, function() {
+						$(prev).addClass('active');
+						$(la).removeClass('active last-active');
+					});
+				} else {
+					$(la).fadeOut(cw);
+					clr = $(a).prev().attr('title');
+					coleur(clr);	
+					$(a).prev().fadeIn(cw, function() {
+						$(a).prev().addClass('active');
+						$(la).removeClass('active last-active');
+					});
+				};
+			};
+			p = 1;
+		//	prn=rn;
+		};
+	};
+		
+	// fadeIn first image
+	$('#slideshow li:first').show();
+	$('#slideshow li:first').addClass('active');
+	clr = $(a).attr('title');
+	coleur(clr);
+	$('.gallery_container').fadeIn(cw);
+		
+	// prev / stop / play / next controls
+	$('#next').click(function(event) {
+		event.preventDefault();
+		clearInterval( IntervalId );
+			$('a#stop span').css({'background-position': '-20px -20px'});
+			play = 0;
+		slideShow('next');
+		return false;
+	});
+	$('#stop').click(function(event) {
+		event.preventDefault(); 
+		if (play === 1) {
+			play = 0;
+			clearInterval( IntervalId );
+			$('a#stop span').css({'background-position': '-20px -20px'});
+		} else {
+			play = 1;
+			slideShow('next');
+			$('a#stop span').css({'background-position': '-40px -20px'});
+			IntervalId = setInterval(function(){slideShow('next');}, it);
+		};
+		return false;
+	});
+	$('#prev').click(function(event) {
+		event.preventDefault(); 
+		clearInterval( IntervalId );
+			$('a#stop span').css({'background-position': '-20px -20px'});
+			play = 0;
+		slideShow('prev');
+		return false;
+	});
+	
+
+});
+/* ]]> */
+</script>
+<body id="home">
+	<div id="header-wrap">
+		<div id="header">
+			<h1><a href="http://innovation.ucdavis.edu/" title=""><span></span>Center for Science and Innovation Studies</a></h1>
+			<div id="headertext"  class="clr opaque">
+				<h3>the Center</h3>
+				<p>Our research engages the many dimensions of the process of technoscientific innovation, from those that make it possible to those that constrain it. <a href="front-page" title="">Read more</a></p>
+			</div>
+			<div id="log-in" class="sidebar opaque">
+				<div id="personal-tools">
+					<a href="#">Log in</a>
+				</div>
+			</div>
+			<div id="search"></div>
+			
+			</div>
+		</div>
+	</div>
+	<div class="gallery_container">
+		<ul id="slideshow">
+			<li title="#706DA5" style="background-image: url(++theme++ucdavis.csis/img/sparrows.gif)"></li>
+			<li title="#7DA6CC" style="background-image: url(++theme++ucdavis.csis/img/roots.gif)"></li>
+			<li title="#00A7E8" style="background-image: url(++theme++ucdavis.csis/img/penrose.gif)"></li>
+		</ul>
+	</div>
+	<div id="content-1">
+		<div id="ucd-menu" class="left">
+			<h2 class="ucdlogo"><a href="http://www.ucdavis.edu/" title=""><span></span>UC Davis</a></h2>
+			<div id="menu">
+				<ul id="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="page.html" class="active">People</a></li>
+					<li><a href="#">News</a></li>
+					<li><a href="#">Events</a></li>
+					<li><a href="#">Research</a></li>
+					<li><a href="#">Projects</a></li>
+				</ul>
+			</div>
+		</div>
+<!--		<div id="maincol" class="left clr opaque">
+			<div class="bar">
+				<div id="portal-breadcrumbs">
+			</div>
+			</div>
+			<div id="main" class="opaque2">
+			</div>
+			<div class="clear"></div>
+		</div>-->
+		<div id="sidebar" class="left opaque">
+			<div id="ftrinfo" class="portlet left sidebar">
+				<p>		    <a accesskey="9"
+			       href="http://sts.ucdavis.edu/contact-info">
+			      Questions or comments?</a> | 
+			
+			    <span>
+			      <a accesskey="0"
+			         href="http://sts.ucdavis.edu/accessibility-info">
+			        Accessibility</a> | 
+			    </span>
+			
+			    
+			
+			    <span>
+			      <b>Last updated:</b>
+			    </span>
+			
+			    March 26, 2010
+			
+			    <br />
+			
+			    Copyright &copy; The Regents of the University of California, Davis campus 2005-06. All Rights Reserved.
+				</p>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="position:absolute; left:-2000px">design by <a href="http://mmott.com">mmott visual</a></div>
+</body>
+</html>

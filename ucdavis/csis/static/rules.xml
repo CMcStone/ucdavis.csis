@@ -1,10 +1,16 @@
-<rules 
-	xmlns="http://namespaces.plone.org/diazo"
-    xmlns:css="http://namespaces.plone.org/diazo/css"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	
-	<theme href="index.html"/>
-	<theme href="frontpage.html" css:if-content="body.section-front-page"/>
+<?xml version="1.0" encoding="utf-8"?>
+<rules xmlns="http://namespaces.plone.org/diazo"
+       xmlns:css="http://namespaces.plone.org/diazo/css"
+       xmlns:xhtml="http://www.w3.org/1999/xhtml"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+       xmlns:xi="http://www.w3.org/2001/XInclude">
+	  
+	   <rules css-if-content="#visual-portal-wrapper" >
+
+  <theme href="frontpage.html" css:if-content="body.section-front-page"/>
+  <theme href="index.html"/>
+  
+   
 
 <!--<theme css:if-content="body.section-front-page" href="frontpage.html"/>-->
 <!--<theme href="index.html"/>-->
@@ -67,5 +73,6 @@
 
 
    <drop content='//*/dl/dd/a/img' /> 
+</rules>
 
 </rules> 
