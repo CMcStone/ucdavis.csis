@@ -6,7 +6,7 @@
        xmlns:xi="http://www.w3.org/2001/XInclude">
 	  
 
-	   <rules css-if-content="#visual-portal-wrapper" >
+	   <rules css:if-content="#visual-portal-wrapper" >
 
   <theme href="frontpage.html" css:if-content="body.section-front-page"/>
   <theme href="index.html"/>
