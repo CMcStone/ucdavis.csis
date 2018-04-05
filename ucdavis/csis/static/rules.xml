@@ -6,12 +6,16 @@
        xmlns:xi="http://www.w3.org/2001/XInclude">
 	  
 
-	   <rules css:if-content="#visual-portal-wrapper" >
+	
 
   <theme href="frontpage.html" css:if-content="body.section-front-page"/>
   <theme href="index.html"/>
   
+  <notheme css:if-not-content="#visual-portal-wrapper" />
+  
+  
    
+  <before css:theme="#ftrinfo" css:content="#portal-column-two" css:if-content="body.section-front-page"/>
 
 <!--<theme css:if-content="body.section-front-page" href="frontpage.html"/>-->
 <!--<theme href="index.html"/>-->
@@ -25,9 +29,15 @@
 
     <!-- prepend theme="/html/head" content="/html/head/link | /html/head/style" / -->
 
-    <prepend theme="/html/head" content="/html/head/script" />
+    <before theme="/html/head" content="/html/head/script" />
     
-    <prepend content="/html/body/@class" theme="/html/body" /> 
+    <!--before content="/html/body/@class" theme="/html/body" /--> 
+	<merge
+	        attributes="class"
+	        css:content="body"
+	        css:theme="body"
+	        />
+	
 
 
 
@@ -44,6 +54,8 @@
 
     <replace content='//*[@id="portal-personaltools"]' 
             theme='//*[@id="personal-tools"]' />
+			
+	
 
 
     <!-- content area -->
@@ -53,11 +65,11 @@
  <drop content='//*[@id="breadcrumbs-you-are-here"]' />
                
     <copy content='//*[@id="portal-column-content"]/div'    
-               theme='//*[@id="main"]' />
+               theme='//*[@id="main"]' css:if-not-content="body.section-front-page"/>
 
 
     <!-- Portlets -->
-   <prepend content='//*[@id="portal-column-one"]/div' 
+   <before content='//*[@id="portal-column-one"]/div' 
          theme='//*[@id="sidebar"]' />
 
 
@@ -66,14 +78,14 @@
  <!--   <copy content='//*[@id="portal-searchbox"]' 
             theme='//*[@id="search"]' />-->
             
-   <copy content='//*[@id="portal-footer"]' 
-         theme='//*[@id="ftrinfo"]' />
+  <!-- <copy content='//*[@id="portal-footer"]' 
+         theme='//*[@id="ftrinfo"]' /> -->
          
- <!--  <copy content='//*[@id="portal-colophon"]/div/ul' 
-         theme='//*[@id="ftr-info"]' />-->
+ <copy content='//*[@id="portal-colophon"]/div/ul' 
+         theme='//*[@id="ftr-info"]' />
 
 
    <drop content='//*/dl/dd/a/img' /> 
-</rules>
+   
 
 </rules> 
