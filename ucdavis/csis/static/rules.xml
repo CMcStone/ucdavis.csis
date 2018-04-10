@@ -15,8 +15,8 @@
   
   
    
-  <before css:theme="#ftrinfo" css:content="#portal-column-two" css:if-content="body.section-front-page"/>
-
+  <!--before css:theme="#ftrinfo" css:content="#portal-column-two" css:if-content="body.section-front-page"/-->
+  <before css:theme="#ftrinfo" css:content="#portal-column-two"/> 
 <!--<theme css:if-content="body.section-front-page" href="frontpage.html"/>-->
 <!--<theme href="index.html"/>-->
 
@@ -81,8 +81,8 @@
   <!-- <copy content='//*[@id="portal-footer"]' 
          theme='//*[@id="ftrinfo"]' /> -->
          
- <copy content='//*[@id="portal-colophon"]/div/ul' 
-         theme='//*[@id="ftr-info"]' />
+ <copy content='//*[@id="portal-footer"]' 
+         theme='//*[@id="ftrinfo"]' />
 
 
    <drop content='//*/dl/dd/a/img' /> 
