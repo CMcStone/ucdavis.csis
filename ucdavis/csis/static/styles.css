@@ -1017,3 +1017,12 @@ h4.personName {
 #main #hcard h1 {
 	clear: none;
 }
+.classificationListing .listing .cell a img {
+   float: right;
+   padding-left: 20px;
+   padding-bottom: 10px;
+
+.classificationListing h2 {
+  padding-top: 10px;
+  padding-bottom 10px;
+}
